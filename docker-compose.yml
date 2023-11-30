@@ -18,10 +18,10 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: nick@nicholasgraf.com
+      PGADMIN_DEFAULT_EMAIL: test@test.com
       PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
-      - "8001:80"
+      - "8002:80"
     links:
       - db:db
     depends_on:
@@ -31,7 +31,7 @@ services:
     build: ./api
     restart: always
     ports:
-      - "8000:8000"
+      - "8001:8001"
     depends_on:
       - db
       - pgadmin
@@ -39,7 +39,7 @@ services:
   ui:
     build: ./ui
     ports:
-      - "80:80"
+      - "8000:80"
     depends_on:
       - api
 

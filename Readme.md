@@ -2,6 +2,8 @@
 
 Stop screwing around with large frameworks!
 
+This is a full stack app using docker, Postgres, Node.js, and a vanilla UI.
+
 ## Whats Included
 
 Total files: 11 (including the favicon)
@@ -11,9 +13,9 @@ Total lines of code: 259
 Contents:
 
 - database (Postgres)
-- api (Node.js)
-- ui (Vanilla HTML, CSS, JavaScript)
 - pgAdmin
+- api (Node.js)
+- ui (HTML, CSS, JavaScript)
 
 ## Requirements
 
@@ -31,18 +33,25 @@ Contents:
     docker compose down --rmi all --volumes
 ```
 
-App will load at: http://localhost/
+App will load at: http://localhost:8000
+
+API will load at: http://localhost:8001
 
 ## pgAdmin
 
-pgAdmin panel is included at http://localhost:8001/
+pgAdmin panel is included at http://localhost:8002
+
+Username: test@test.com
+
+Password: password
 
 To register the database:
 
-1. Selecting from the top menu: Object > Register > Server
-2. Enter the database name under the General tab: full-stack
-3. Select the Connection tab
-4. Enter the Host name/address: db
-5. Enter the username: postgres
-6. Enter the password: password
-7. Click Save
+1. Click on the "Servers" object in the Object Explorer on the left
+2. Select from the top menu: Object > Register > Server
+3. Enter the database name under the General tab: full-stack
+4. Select the Connection tab
+5. Enter the Host name/address: db
+6. Enter the username: postgres
+7. Enter the password: password
+8. Click Save
