@@ -1,6 +1,19 @@
-# Full Stack App
+# A Simple Full Stack App
 
-Stop screwing around with lots of code and frameworks!
+Stop screwing around with large frameworks!
+
+## Whats Included
+
+Total files: 11 (including the favicon)
+
+Total lines of code: 259
+
+Contents:
+
+- database (Postgres)
+- api (Node.js)
+- ui (Vanilla HTML, CSS, JavaScript)
+- pgAdmin
 
 ## Requirements
 
@@ -12,11 +25,10 @@ Stop screwing around with lots of code and frameworks!
 
 ```bash
     # Start
-    docker compose up
+    docker compose up --force-recreate --build
 
     # Destroy
     docker compose down --rmi all --volumes
-
 ```
 
 App will load at: http://localhost/
