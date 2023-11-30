@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  db:
+    build: ./db
+    environment:
+      POSTGRES_DB: full-stack
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  api:
+    build: ./api
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  ui:
+    build: ./ui
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+volumes:
+  db-data:

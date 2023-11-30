@@ -1,0 +1,12 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "A simple full stack application.",
+  "main": "server.js",
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}
