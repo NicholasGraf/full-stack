@@ -9,6 +9,23 @@ services:
       POSTGRES_PASSWORD: password
     volumes:
       - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -q -d full-stack -U postgres"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: nick@nicholasgraf.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - "8001:80"
+    links:
+      - db:db
+    depends_on:
+      - db
 
   api:
     build: ./api
@@ -17,6 +34,7 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - pgadmin
 
   ui:
     build: ./ui

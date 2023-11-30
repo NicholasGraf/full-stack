@@ -66,18 +66,22 @@ function handlePostItem(req, res) {
       return;
     }
 
-    const { name, age } = parsedBody;
+    const { firstName, lastName, age, address, city, zip } = parsedBody;
 
-    pool.query("INSERT INTO items (name, age) VALUES ($1, $2) RETURNING *", [name, age], (error, result) => {
-      if (error) {
-        console.error(error);
-        res.writeHead(500, { "Content-Type": "text/plain" });
-        res.end("Internal Server Error");
-      } else {
-        res.writeHead(201, { "Content-Type": "application/json" });
-        res.end(JSON.stringify(result.rows[0]));
+    pool.query(
+      "INSERT INTO items (firstName, lastName, age, address, city, zip, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW()) RETURNING *",
+      [firstName, lastName, age, address, city, zip],
+      (error, result) => {
+        if (error) {
+          console.error(error);
+          res.writeHead(500, { "Content-Type": "text/plain" });
+          res.end("Internal Server Error");
+        } else {
+          res.writeHead(201, { "Content-Type": "application/json" });
+          res.end(JSON.stringify(result.rows[0]));
+        }
       }
-    });
+    );
   });
 }
 
